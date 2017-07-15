@@ -1,14 +1,17 @@
 package com.mby.appartmanager.dao;
 
-import java.util.Date;
+import java.util.List;
 
-import com.mby.appartmanager.models.Transaction.Type;
+import com.mby.appartmanager.models.Transaction;
 
 public interface TransactionService {
 
-	public boolean createTransaction(Type type, Date date, boolean isNeuf, short montant);
-	public boolean deleteTransaction(int transactionID);
-	public boolean setDispositifFiscal(int transactionID, int dispositifFiscalID);
-	public boolean addDocument(int transactionID, int documentID);
+	public Transaction deleteObject(long transactionID);
+	public Transaction getObjectById(long transactionID);
+	public List<Transaction> getAllObjects();
+	public Transaction updateObject(long transactionID, Transaction transaction) throws Exception;
+	public Transaction saveObject(Transaction transaction);
+//	public Transaction setDispositifFiscal(long transactionID, long dispositifFiscalID) throws Exception;
+	public Transaction addDocument(long transactionID, long documentID) throws Exception;
 
 }

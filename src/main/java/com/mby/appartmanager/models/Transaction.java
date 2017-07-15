@@ -10,9 +10,6 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
-
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 @Entity(name="Transaction")
@@ -35,7 +32,7 @@ public class Transaction extends AbstractModelWithDocuments {
 	private short montant;
 	
 	@OneToOne
-	@Cascade({CascadeType.ALL})
+	//@Cascade({CascadeType.ALL})
 	private DispositifFiscal dispositifFiscal;
 	
 	public Type getType() {

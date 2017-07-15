@@ -30,9 +30,9 @@ public class DBSession {
 		return dbsession;
 	}
 	
-	//public Session openSession(){
-		//return factory.openSession();
-	//}
+	public Session openSession(){
+		return factory.openSession();
+	}
 	
 	public Object saveTransactionalObject(Object o){
 		if(null!=factory) {
@@ -105,10 +105,13 @@ public class DBSession {
 			if(null != session) {
 				 try {
 					 Transaction tx = session.beginTransaction();
-					 oldObj = session.get(clazz, id);
+//					 oldObj = session.get(clazz, id);
+					 oldObj = session.load(clazz, id);
 					 if(null!=oldObj) {
 						 BeanUtils.copyProperties(oldObj, newObj);
-						 session.update(oldObj);
+//						 session.update(oldObj);
+						 session.merge(oldObj);
+						 session.flush();
 						 tx.commit();
 					 }
 				 }

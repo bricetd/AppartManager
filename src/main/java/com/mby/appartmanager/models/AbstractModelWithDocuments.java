@@ -2,19 +2,17 @@ package com.mby.appartmanager.models;
 
 import java.util.List;
 
+import javax.persistence.FetchType;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToMany;
-
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
 
 import com.mby.appartmanager.models.interfaces.DocumentInterface;
 
 @MappedSuperclass
 public abstract class AbstractModelWithDocuments extends AbstractModel implements DocumentInterface {
 
-	@OneToMany
-	@Cascade({CascadeType.ALL})
+	@OneToMany(fetch = FetchType.EAGER)
+//	@Cascade(CascadeType.ALL)
 	protected List<Document> documents;
 	
 	public List<Document> getDocuments() {
