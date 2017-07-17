@@ -34,8 +34,6 @@ public class Paiement extends AbstractModelWithDocuments {
 	@XmlElement(name="commentaire")
 	private String commentaire;
 	
-	
-	
 	public short getMontant() {
 		return montant;
 	}

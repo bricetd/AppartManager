@@ -1,30 +1,42 @@
 package com.mby.appartmanager.dao.impl;
 
-import java.util.Date;
-
+import com.mby.appartmanager.dao.DocumentService;
 import com.mby.appartmanager.dao.PaiementService;
-import com.mby.appartmanager.models.Paiement.Categorie;
-import com.mby.appartmanager.models.Paiement.ModePaiement;
+import com.mby.appartmanager.models.Document;
+import com.mby.appartmanager.models.Paiement;
 
-public class PaiementServiceImpl implements PaiementService {
+public class PaiementServiceImpl extends AbstractServiceImpl<Paiement> implements PaiementService {
 
-	@Override
-	public boolean createPaiement(short montant, Date date, Categorie categorie, ModePaiement modePaiement,
-			String commentaire) {
-		// TODO Auto-generated method stub
-		return false;
+private static PaiementServiceImpl paiementServiceImpl;
+private DocumentService documentService;
+
+
+	private PaiementServiceImpl() {
+		super(Paiement.class);
+	}
+	
+	public static synchronized PaiementServiceImpl getInstance() {
+		if (null == paiementServiceImpl) {
+			paiementServiceImpl = new PaiementServiceImpl();
+		}
+		return paiementServiceImpl;
 	}
 
-	@Override
-	public boolean deletePaiement(int paiementID) {
-		// TODO Auto-generated method stub
-		return false;
+	public void setDocumentService(DocumentService documentService) {
+		this.documentService = documentService;
 	}
-
+	
 	@Override
-	public boolean addDocument(int paiementID, int documentID) {
-		// TODO Auto-generated method stub
-		return false;
+	public Paiement addDocument(long paiementID, long documentID) throws Exception {
+		Paiement paiement = paiementServiceImpl.getObjectById(paiementID);
+		if(null!=paiement) {
+			Document document = documentService.getObjectById(documentID);
+			if(null!=document) {
+				paiement.addDocument(document);
+				paiementServiceImpl.updateObject(paiementID, paiement);
+			}
+		}
+		return paiement;
 	}
 
 }
