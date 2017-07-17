@@ -37,8 +37,8 @@ public abstract class GenericAPI<T> {
 	
 	@PUT
 	@Path("/{id}")
-	public Response updateObject(@PathParam("id") final long id, final T doc) throws Exception {
-		T object = serviceHandler.updateObject(id, doc);
+	public Response updateObject(@PathParam("id") final long id, final T obj) throws Exception {
+		T object = serviceHandler.updateObject(id, obj);
 		return Response.status(200).entity(object).build();
 	}
 	
@@ -51,8 +51,8 @@ public abstract class GenericAPI<T> {
 	
 	@POST
 	@Path("/")
-	public Response createObject(final T doc) {
-		T object = serviceHandler.saveObject(doc);
+	public Response createObject(final T obj) {
+		T object = serviceHandler.saveObject(obj);
 		return Response.status(200).entity(object).build();
 	}
 }

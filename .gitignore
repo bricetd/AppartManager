@@ -1,3 +1,6 @@
+batterymanager.log
+Docker/tomcat/appartmanager.war
+Docker/tomcat2/appartmanager.war
 test-output/
 target/
 pom.xml.tag

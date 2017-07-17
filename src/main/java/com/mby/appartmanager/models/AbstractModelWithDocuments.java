@@ -38,5 +38,4 @@ public abstract class AbstractModelWithDocuments extends AbstractModel implement
 		}
 		return result;
 	}
-
 }
