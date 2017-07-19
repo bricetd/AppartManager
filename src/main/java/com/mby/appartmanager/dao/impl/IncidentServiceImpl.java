@@ -1,25 +1,42 @@
 package com.mby.appartmanager.dao.impl;
 
-import java.util.Date;
+import com.mby.appartmanager.dao.DocumentService;
+import com.mby.appartmanager.dao.IncidentService;
+import com.mby.appartmanager.models.Document;
+import com.mby.appartmanager.models.Incident;
 
-public class IncidentServiceImpl implements com.mby.appartmanager.dao.IncidentService {
+public class IncidentServiceImpl  extends AbstractServiceImpl<Incident> implements IncidentService {
 
-	@Override
-	public boolean createIncident(Date date, Date date_fin, String libelle, String description, String justification) {
-		// TODO Auto-generated method stub
-		return false;
+private static IncidentServiceImpl incidentServiceImpl;
+private DocumentService documentService;
+
+
+	private IncidentServiceImpl() {
+		super(Incident.class);
+	}
+	
+	public static synchronized IncidentServiceImpl getInstance() {
+		if (null == incidentServiceImpl) {
+			incidentServiceImpl = new IncidentServiceImpl();
+		}
+		return incidentServiceImpl;
 	}
 
-	@Override
-	public boolean deleteIncident(int incidentID) {
-		// TODO Auto-generated method stub
-		return false;
+	public void setDocumentService(DocumentService documentService) {
+		this.documentService = documentService;
 	}
-
+	
 	@Override
-	public boolean addDocument(int incidentID, int documentID) {
-		// TODO Auto-generated method stub
-		return false;
+	public Incident addDocument(long incidentID, long documentID) throws Exception {
+		Incident incident = incidentServiceImpl.getObjectById(incidentID);
+		if(null!=incident) {
+			Document document = documentService.getObjectById(documentID);
+			if(null!=document) {
+				incident.addDocument(document);
+				incidentServiceImpl.updateObject(incidentID, incident);
+			}
+		}
+		return incident;
 	}
 
 }
