@@ -1,9 +1,16 @@
 package com.mby.appartmanager.dao;
 
+import java.util.List;
+
+import com.mby.appartmanager.models.Piece;
+
 public interface PieceService {
 
-	public boolean createPiece(String nom, short surface);
-	public boolean deletePiece(int pieceID);
-	public boolean addDocument(int pieceID, int documentID);
-	public boolean addEquipement(int pieceID, int equipementID);
+	public Piece deleteObject(long pieceID);
+	public Piece getObjectById(long pieceID);
+	public List<Piece> getAllObjects();
+	public Piece updateObject(long pieceID, Piece piece) throws Exception;
+	public Piece saveObject(Piece piece);
+	public Piece addDocument(long pieceID, long documentID) throws Exception;
+	public Piece addEquipement(long pieceID, long equipementID) throws Exception;
 }

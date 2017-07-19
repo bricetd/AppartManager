@@ -1,14 +1,14 @@
 package com.mby.appartmanager.models.interfaces;
 
-import java.util.List;
+import java.util.Set;
 
 import com.mby.appartmanager.models.Charges;
 
 public interface ChargesInterface {
 
-	public List<Charges> getCharges();
+	public Set<Charges> getCharges();
 
-	public void setCharges(List<Charges> charges);
+	public void setCharges(Set<Charges> charges);
 	
 	public boolean addCharge(Charges charge);
 	

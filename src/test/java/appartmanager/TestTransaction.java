@@ -89,7 +89,9 @@ public class TestTransaction {
 		transactionService.addDocument(transactionID, doc.getId());
 		Transaction transaction = transactionService.getObjectById(transactionID);
 		Assert.assertTrue(transaction.getDocuments().size() == 1);
-		Assert.assertEquals(transaction.getDocuments().get(0).getId(), doc.getId());
+		for (Document d : transaction.getDocuments()) {
+			Assert.assertEquals(d.getId(), doc.getId());
+		}
 	}
 	@Test(dependsOnMethods="testAddDocument")
 	public void testSetDispositifFiscal() throws Exception {

@@ -1,14 +1,14 @@
 package com.mby.appartmanager.models.interfaces;
 
-import java.util.List;
+import java.util.Set;
 
 import com.mby.appartmanager.models.ContratGestion;
 
 public interface ContratGestionInterface {
 
-	public List<ContratGestion> getContratGestions();
+	public Set<ContratGestion> getContratGestions();
 
-	public void setContratGestions(List<ContratGestion> contratsGestions);
+	public void setContratGestions(Set<ContratGestion> contratsGestions);
 	
 	public boolean addContratGestion(ContratGestion contratGestion);
 	

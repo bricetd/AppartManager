@@ -1,14 +1,14 @@
 package com.mby.appartmanager.models.interfaces;
 
-import java.util.List;
+import java.util.Set;
 
 import com.mby.appartmanager.models.Document;
 
 public interface DocumentInterface {
 
-	public List<Document> getDocuments();
+	public Set<Document> getDocuments();
 
-	public void setDocuments(List<Document> documents);
+	public void setDocuments(Set<Document> documents);
 	
 	public boolean addDocument(Document document);
 	

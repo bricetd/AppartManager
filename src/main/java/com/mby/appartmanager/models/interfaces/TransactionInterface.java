@@ -1,14 +1,14 @@
 package com.mby.appartmanager.models.interfaces;
 
-import java.util.List;
+import java.util.Set;
 
 import com.mby.appartmanager.models.Transaction;
 
 public interface TransactionInterface {
 
-	public List<Transaction> getTransactions();
+	public Set<Transaction> getTransactions();
 
-	public void setTransactions(List<Transaction> transactions);
+	public void setTransactions(Set<Transaction> transactions);
 	
 	public boolean addTransaction(Transaction Transaction);
 	

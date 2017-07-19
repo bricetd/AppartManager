@@ -1,14 +1,14 @@
 package com.mby.appartmanager.models.interfaces;
 
-import java.util.List;
+import java.util.Set;
 
 import com.mby.appartmanager.models.Equipement;
 
 public interface EquipementInterface {
 
-	public List<Equipement> getEquipements();
+	public Set<Equipement> getEquipements();
 
-	public void setEquipements(List<Equipement> equipements);
+	public void setEquipements(Set<Equipement> equipements);
 	
 	public boolean addEquipement(Equipement equipement);
 	

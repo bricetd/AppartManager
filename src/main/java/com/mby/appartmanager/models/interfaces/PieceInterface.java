@@ -1,14 +1,14 @@
 package com.mby.appartmanager.models.interfaces;
 
-import java.util.List;
+import java.util.Set;
 
 import com.mby.appartmanager.models.Piece;
 
 public interface PieceInterface {
 
-	public List<Piece> getPieces();
+	public Set<Piece> getPieces();
 
-	public void setPieces(List<Piece> pieces);
+	public void setPieces(Set<Piece> pieces);
 	
 	public boolean addPiece(Piece piece);
 	

@@ -1,7 +1,7 @@
 package com.mby.appartmanager.models;
 
 import java.util.Date;
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -61,18 +61,18 @@ public class Locataire extends AbstractModelWithDocuments implements PaiementInt
 	
 	@OneToMany
 	@Cascade({CascadeType.ALL})
-	private List<Incident> incidents;
+	private Set<Incident> incidents;
 	
 	@OneToMany
 	@Cascade({CascadeType.ALL})
-	private List<Paiement> paiements;
+	private Set<Paiement> paiements;
 	
 	
-	public List<Incident> getIncidents() {
+	public Set<Incident> getIncidents() {
 		return incidents;
 	}
 
-	public void setIncidents(List<Incident> incidents) {
+	public void setIncidents(Set<Incident> incidents) {
 		this.incidents = incidents;
 	}
 
@@ -92,11 +92,11 @@ public class Locataire extends AbstractModelWithDocuments implements PaiementInt
 		return result;
 	}
 
-	public List<Paiement> getPaiements() {
+	public Set<Paiement> getPaiements() {
 		return paiements;
 	}
 
-	public void setPaiements(List<Paiement> paiements) {
+	public void setPaiements(Set<Paiement> paiements) {
 		this.paiements = paiements;
 	}
 

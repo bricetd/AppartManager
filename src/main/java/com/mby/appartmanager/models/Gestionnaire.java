@@ -1,6 +1,6 @@
 package com.mby.appartmanager.models;
 
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -39,13 +39,13 @@ public class Gestionnaire extends AbstractModel implements ContratGestionInterfa
 	
 	@OneToMany
 	@Cascade({CascadeType.ALL})
-	protected List<ContratGestion> contratsGestions;
+	protected Set<ContratGestion> contratsGestions;
 
-	public List<ContratGestion> getContratGestions() {
+	public Set<ContratGestion> getContratGestions() {
 		return contratsGestions;
 	}
 
-	public void setContratGestions(List<ContratGestion> contratsGestions) {
+	public void setContratGestions(Set<ContratGestion> contratsGestions) {
 		this.contratsGestions = contratsGestions;
 	}
 
@@ -97,11 +97,11 @@ public class Gestionnaire extends AbstractModel implements ContratGestionInterfa
 		this.coordonnees = coordonnees;
 	}
 
-	public List<ContratGestion> getContratsGestions() {
+	public Set<ContratGestion> getContratsGestions() {
 		return contratsGestions;
 	}
 
-	public void setContratsGestions(List<ContratGestion> contratsGestions) {
+	public void setContratsGestions(Set<ContratGestion> contratsGestions) {
 		this.contratsGestions = contratsGestions;
 	}
 }

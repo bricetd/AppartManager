@@ -94,7 +94,9 @@ public class TestPaiement {
 		paiementService.addDocument(paiementID, doc.getId());
 		Paiement paiement = paiementService.getObjectById(paiementID);
 		Assert.assertTrue(paiement.getDocuments().size() == 1);
-		Assert.assertEquals(paiement.getDocuments().get(0).getId(), doc.getId());
+		for (Document d : paiement.getDocuments()) {
+			Assert.assertEquals(d.getId(), doc.getId());
+		}
 	}
 	
 	@Test(dependsOnMethods="testAddDocument")

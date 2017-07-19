@@ -1,7 +1,7 @@
 package com.mby.appartmanager.models;
 
 import java.util.Date;
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -39,13 +39,13 @@ public class Location extends AbstractModelWithDocuments implements LocataireInt
 	
 	@OneToMany
 	@Cascade({CascadeType.ALL})
-	private List<Locataire> locataires;
+	private Set<Locataire> locataires;
 	
-	public List<Locataire> getLocataires() {
+	public Set<Locataire> getLocataires() {
 		return locataires;
 	}
 
-	public void setLocataires(List<Locataire> locataires) {
+	public void setLocataires(Set<Locataire> locataires) {
 		this.locataires = locataires;
 	}
 

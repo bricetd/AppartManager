@@ -80,7 +80,9 @@ public class TestEquipement {
 		equipementService.addDocument(equipementID, doc.getId());
 		Equipement equipement = equipementService.getObjectById(equipementID);
 		Assert.assertTrue(equipement.getDocuments().size() == 1);
-		Assert.assertEquals(equipement.getDocuments().get(0).getId(), doc.getId());
+		for (Document d : equipement.getDocuments()) {
+			Assert.assertEquals(d.getId(), doc.getId());
+		}
 	}
 	
 	@Test(dependsOnMethods="testAddDocument")

@@ -1,14 +1,14 @@
 package com.mby.appartmanager.models.interfaces;
 
-import java.util.List;
+import java.util.Set;
 
 import com.mby.appartmanager.models.Locataire;
 
 public interface LocataireInterface {
 
-	public List<Locataire> getLocataires();
+	public Set<Locataire> getLocataires();
 
-	public void setLocataires(List<Locataire> locataires);
+	public void setLocataires(Set<Locataire> locataires);
 	
 	public boolean addLocataire(Locataire locataire);
 	

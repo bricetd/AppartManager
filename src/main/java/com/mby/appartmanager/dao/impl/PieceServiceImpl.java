@@ -1,31 +1,61 @@
 package com.mby.appartmanager.dao.impl;
 
+import com.mby.appartmanager.dao.DocumentService;
+import com.mby.appartmanager.dao.EquipementService;
 import com.mby.appartmanager.dao.PieceService;
+import com.mby.appartmanager.models.Document;
+import com.mby.appartmanager.models.Equipement;
+import com.mby.appartmanager.models.Piece;
 
-public class PieceServiceImpl implements PieceService {
+public class PieceServiceImpl extends AbstractServiceImpl<Piece> implements PieceService {
 
-	@Override
-	public boolean createPiece(String nom, short surface) {
-		// TODO Auto-generated method stub
-		return false;
+private static PieceServiceImpl pieceServiceImpl;
+private DocumentService documentService;
+private EquipementService equipementService;
+
+
+	private PieceServiceImpl() {
+		super(Piece.class);
+	}
+	
+	public static synchronized PieceServiceImpl getInstance() {
+		if (null == pieceServiceImpl) {
+			pieceServiceImpl = new PieceServiceImpl();
+		}
+		return pieceServiceImpl;
 	}
 
-	@Override
-	public boolean deletePiece(int pieceID) {
-		// TODO Auto-generated method stub
-		return false;
+	public void setDocumentService(DocumentService documentService) {
+		this.documentService = documentService;
 	}
-
-	@Override
-	public boolean addDocument(int pieceID, int documentID) {
-		// TODO Auto-generated method stub
-		return false;
+	
+	public void setEquipementService(EquipementService equipementService) {
+		this.equipementService = equipementService;
 	}
-
+	
 	@Override
-	public boolean addEquipement(int pieceID, int equipementID) {
-		// TODO Auto-generated method stub
-		return false;
+	public Piece addDocument(long pieceID, long documentID) throws Exception {
+		Piece piece = pieceServiceImpl.getObjectById(pieceID);
+		if(null!=piece) {
+			Document document = documentService.getObjectById(documentID);
+			if(null!=document) {
+				piece.addDocument(document);
+				pieceServiceImpl.updateObject(pieceID, piece);
+			}
+		}
+		return piece;
 	}
-
+	
+	@Override
+	public Piece addEquipement(long pieceID, long equipementID) throws Exception {
+		Piece piece = pieceServiceImpl.getObjectById(pieceID);
+		if(null!=piece) {
+			Equipement equipement = equipementService.getObjectById(equipementID);
+			if(null!=equipement) {
+				piece.addEquipement(equipement);
+				pieceServiceImpl.updateObject(pieceID, piece);
+			}
+		}
+		return piece;
+	}
 }

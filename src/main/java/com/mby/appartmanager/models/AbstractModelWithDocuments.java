@@ -1,6 +1,6 @@
 package com.mby.appartmanager.models;
 
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.FetchType;
 import javax.persistence.MappedSuperclass;
@@ -13,13 +13,13 @@ public abstract class AbstractModelWithDocuments extends AbstractModel implement
 
 	@OneToMany(fetch = FetchType.EAGER)
 //	@Cascade(CascadeType.ALL)
-	protected List<Document> documents;
+	protected Set<Document> documents;
 	
-	public List<Document> getDocuments() {
+	public Set<Document> getDocuments() {
 		return documents;
 	}
 
-	public void setDocuments(List<Document> documents) {
+	public void setDocuments(Set<Document> documents) {
 		this.documents = documents;
 	}
 

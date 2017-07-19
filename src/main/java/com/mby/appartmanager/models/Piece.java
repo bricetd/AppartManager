@@ -1,17 +1,15 @@
 package com.mby.appartmanager.models;
 
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
 
 import com.mby.appartmanager.models.interfaces.EquipementInterface;
 
@@ -28,9 +26,9 @@ public class Piece extends AbstractModelWithDocuments implements EquipementInter
 	@XmlElement(name="surface")
 	private int surface;
 	
-	@OneToMany
-	@Cascade({CascadeType.ALL})
-	private List<Equipement> equipements;
+	@OneToMany(fetch = FetchType.EAGER)
+//	@Cascade({CascadeType.ALL})
+	private Set<Equipement> equipements;
 
 	public String getNom() {
 		return nom;
@@ -48,11 +46,11 @@ public class Piece extends AbstractModelWithDocuments implements EquipementInter
 		this.surface = surface;
 	}
 
-	public List<Equipement> getEquipements() {
+	public Set<Equipement> getEquipements() {
 		return equipements;
 	}
 
-	public void setEquipements(List<Equipement> equipements) {
+	public void setEquipements(Set<Equipement> equipements) {
 		this.equipements = equipements;
 	}
 

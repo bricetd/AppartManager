@@ -1,14 +1,14 @@
 package com.mby.appartmanager.models.interfaces;
 
-import java.util.List;
+import java.util.Set;
 
 import com.mby.appartmanager.models.Incident;
 
 public interface IncidentInterface {
 
-	public List<Incident> getIncidents();
+	public Set<Incident> getIncidents();
 
-	public void setIncidents(List<Incident> incidents);
+	public void setIncidents(Set<Incident> incidents);
 	
 	public boolean addIncident(Incident incident);
 	

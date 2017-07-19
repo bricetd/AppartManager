@@ -1,14 +1,14 @@
 package com.mby.appartmanager.models.interfaces;
 
-import java.util.List;
+import java.util.Set;
 
 import com.mby.appartmanager.models.Gestionnaire;
 
 public interface GestionnaireInterface {
 
-	public List<Gestionnaire> getGestionnaires();
+	public Set<Gestionnaire> getGestionnaires();
 
-	public void setGestionnaires(List<Gestionnaire> gestionnaires);
+	public void setGestionnaires(Set<Gestionnaire> gestionnaires);
 	
 	public boolean addGestionnaire(Gestionnaire gestionnaire);
 	

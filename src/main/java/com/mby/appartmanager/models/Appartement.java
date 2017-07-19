@@ -1,7 +1,7 @@
 package com.mby.appartmanager.models;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -48,23 +48,23 @@ public class Appartement extends AbstractModelWithDocuments implements Gestionna
 	
 	@OneToMany
 	@Cascade({CascadeType.ALL})
-	private List<Transaction> transactions;
+	private Set<Transaction> transactions;
 	
 	@OneToMany
 	@Cascade({CascadeType.ALL})
-	private List<Location> locations;
+	private Set<Location> locations;
 	
 	@OneToMany
 	@Cascade({CascadeType.ALL})
-	private List<Piece> pieces;
+	private Set<Piece> pieces;
 	
 	@OneToMany
 	@Cascade({CascadeType.ALL})
-	private List<Charges> charges;
+	private Set<Charges> charges;
 	
 	@OneToMany
 	@Cascade({CascadeType.ALL})
-	private List<Gestionnaire> gestionnaires;
+	private Set<Gestionnaire> gestionnaires;
 	
 	@OneToOne
 	@Cascade({CascadeType.ALL})
@@ -81,11 +81,11 @@ public class Appartement extends AbstractModelWithDocuments implements Gestionna
 		this.etage = etage;
 		this.hasParking = hasParking;
 		this.hasCave = hasCave;
-		gestionnaires = new ArrayList<Gestionnaire>();
-		charges = new ArrayList<Charges>();
-		transactions = new ArrayList<Transaction>();
-		locations = new ArrayList<Location>();
-		pieces = new ArrayList<Piece>();
+		gestionnaires = new HashSet<Gestionnaire>();
+		charges = new HashSet<Charges>();
+		transactions = new HashSet<Transaction>();
+		locations = new HashSet<Location>();
+		pieces = new HashSet<Piece>();
 	}
 	
 	
@@ -137,11 +137,11 @@ public class Appartement extends AbstractModelWithDocuments implements Gestionna
 		this.coordonnees = coordonnees;
 	}
 
-	public List<Charges> getCharges() {
+	public Set<Charges> getCharges() {
 		return charges;
 	}
 
-	public void setCharges(List<Charges> charges) {
+	public void setCharges(Set<Charges> charges) {
 		this.charges = charges;
 	}
 
@@ -161,11 +161,11 @@ public class Appartement extends AbstractModelWithDocuments implements Gestionna
 		return result;
 	}
 
-	public List<Location> getLocations() {
+	public Set<Location> getLocations() {
 		return locations;
 	}
 
-	public void setLocations(List<Location> locations) {
+	public void setLocations(Set<Location> locations) {
 		this.locations = locations;
 	}
 
@@ -185,11 +185,11 @@ public class Appartement extends AbstractModelWithDocuments implements Gestionna
 		return result;
 	}
 
-	public List<Piece> getPieces() {
+	public Set<Piece> getPieces() {
 		return pieces;
 	}
 
-	public void setPieces(List<Piece> pieces) {
+	public void setPieces(Set<Piece> pieces) {
 		this.pieces = pieces;
 	}
 
@@ -209,11 +209,11 @@ public class Appartement extends AbstractModelWithDocuments implements Gestionna
 		return result;
 	}
 
-	public List<Transaction> getTransactions() {
+	public Set<Transaction> getTransactions() {
 		return transactions;
 	}
 
-	public void setTransactions(List<Transaction> transactions) {
+	public void setTransactions(Set<Transaction> transactions) {
 		this.transactions = transactions;
 	}
 
@@ -233,11 +233,11 @@ public class Appartement extends AbstractModelWithDocuments implements Gestionna
 		return result;
 	}
 
-	public List<Gestionnaire> getGestionnaires() {
+	public Set<Gestionnaire> getGestionnaires() {
 		return gestionnaires;
 	}
 
-	public void setGestionnaires(List<Gestionnaire> gestionnaires) {
+	public void setGestionnaires(Set<Gestionnaire> gestionnaires) {
 		this.gestionnaires = gestionnaires;
 	}
 

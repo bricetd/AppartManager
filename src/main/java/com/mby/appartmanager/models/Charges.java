@@ -1,7 +1,7 @@
 package com.mby.appartmanager.models;
 
 import java.util.Date;
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -39,13 +39,13 @@ public class Charges extends AbstractModelWithDocuments implements PaiementInter
 	
 	@OneToMany
 	@Cascade({CascadeType.ALL})
-	private List<Paiement> paiements;
+	private Set<Paiement> paiements;
 	
-	public List<Paiement> getPaiements() {
+	public Set<Paiement> getPaiements() {
 		return paiements;
 	}
 
-	public void setPaiements(List<Paiement> paiements) {
+	public void setPaiements(Set<Paiement> paiements) {
 		this.paiements = paiements;
 	}
 
