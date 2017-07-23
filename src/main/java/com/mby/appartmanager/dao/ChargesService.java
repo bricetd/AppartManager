@@ -1,13 +1,16 @@
 package com.mby.appartmanager.dao;
 
-import java.util.Date;
+import java.util.List;
 
-import com.mby.appartmanager.models.Charges.Frequence;
+import com.mby.appartmanager.models.Charges;
 
 public interface ChargesService {
 
-	public boolean createCharges(String nom, short montant, Frequence frequence, Date date_echeance);
-	public boolean deleteCharges(int chargeID);
-	public boolean addPaiement(int chargeID, int paiementID);
-	public boolean addDocument(int chargeID, int documentID);
+	public Charges deleteObject(long chargesID);
+	public Charges getObjectById(long chargesID);
+	public List<Charges> getAllObjects();
+	public Charges updateObject(long chargesID, Charges charges) throws Exception;
+	public Charges saveObject(Charges charges);
+	public Charges addDocument(long chargesID, long documentID) throws Exception;
+	public Charges addPaiement(long chargesID, long paiementID)throws Exception;
 }

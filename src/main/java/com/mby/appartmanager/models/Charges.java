@@ -5,14 +5,12 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
 
 import com.mby.appartmanager.models.interfaces.PaiementInterface;
 
@@ -37,8 +35,8 @@ public class Charges extends AbstractModelWithDocuments implements PaiementInter
 	@XmlElement(name="date_echeance")
 	private Date date_echeance;
 	
-	@OneToMany
-	@Cascade({CascadeType.ALL})
+	@OneToMany(fetch = FetchType.EAGER)
+//	@Cascade({CascadeType.ALL})
 	private Set<Paiement> paiements;
 	
 	public Set<Paiement> getPaiements() {
