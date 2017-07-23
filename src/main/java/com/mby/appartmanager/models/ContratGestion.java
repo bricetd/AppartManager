@@ -10,9 +10,6 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
-
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 @Entity(name="ContratGestion")
@@ -35,7 +32,7 @@ public class ContratGestion extends AbstractModelWithDocuments {
 	private short tariff;
 	
 	@OneToOne
-	@Cascade({CascadeType.ALL})
+//	@Cascade({CascadeType.ALL})
 	private Options options;
 
 	public Date getDate_debut() {

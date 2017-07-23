@@ -1,11 +1,16 @@
 package com.mby.appartmanager.dao;
 
-import java.util.Date;
+import java.util.List;
+
+import com.mby.appartmanager.models.ContratGestion;
 
 public interface ContratGestionService {
 
-	public boolean createContratGestion(Date date_debut, Date date_fin, short duree, short tariff);
-	public boolean deleteContratGestion(int contratGestionID);
-	public boolean setOptions(int contratGestionID, int optionsID);
-	public boolean addDocument(int contratGestionID, int documentID);
+	public ContratGestion deleteObject(long contratGestionID);
+	public ContratGestion getObjectById(long contratGestionID);
+	public List<ContratGestion> getAllObjects();
+	public ContratGestion updateObject(long contratGestionID, ContratGestion contratGestion) throws Exception;
+	public ContratGestion saveObject(ContratGestion contratGestion);
+	public ContratGestion addDocument(long contratGestionID, long documentID) throws Exception;
+	public ContratGestion setOptions(long contratGestionID, long optionsID) throws Exception;
 }

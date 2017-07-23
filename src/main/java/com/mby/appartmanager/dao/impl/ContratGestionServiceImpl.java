@@ -1,33 +1,61 @@
 package com.mby.appartmanager.dao.impl;
 
-import java.util.Date;
-
 import com.mby.appartmanager.dao.ContratGestionService;
+import com.mby.appartmanager.dao.DocumentService;
+import com.mby.appartmanager.dao.OptionsService;
+import com.mby.appartmanager.models.ContratGestion;
+import com.mby.appartmanager.models.Document;
+import com.mby.appartmanager.models.Options;
 
-public class ContratGestionServiceImpl implements ContratGestionService {
+public class ContratGestionServiceImpl extends AbstractServiceImpl<ContratGestion> implements ContratGestionService {
 
-	@Override
-	public boolean createContratGestion(Date date_debut, Date date_fin, short duree, short tariff) {
-		// TODO Auto-generated method stub
-		return false;
+private static ContratGestionServiceImpl contratGestionServiceImpl;
+private DocumentService documentService;
+private OptionsService optionsService;
+
+
+	private ContratGestionServiceImpl() {
+		super(ContratGestion.class);
+	}
+	
+	public static synchronized ContratGestionServiceImpl getInstance() {
+		if (null == contratGestionServiceImpl) {
+			contratGestionServiceImpl = new ContratGestionServiceImpl();
+		}
+		return contratGestionServiceImpl;
 	}
 
-	@Override
-	public boolean deleteContratGestion(int contratGestionID) {
-		// TODO Auto-generated method stub
-		return false;
+	public void setDocumentService(DocumentService documentService) {
+		this.documentService = documentService;
 	}
-
-	@Override
-	public boolean setOptions(int contratGestionID, int optionsID) {
-		// TODO Auto-generated method stub
-		return false;
+	
+	public void setOptionsService(OptionsService optionsService) {
+		this.optionsService = optionsService;
 	}
-
+	
 	@Override
-	public boolean addDocument(int contratGestionID, int documentID) {
-		// TODO Auto-generated method stub
-		return false;
+	public ContratGestion addDocument(long contratGestionID, long documentID) throws Exception {
+		ContratGestion contratGestion = contratGestionServiceImpl.getObjectById(contratGestionID);
+		if(null!=contratGestion) {
+			Document document = documentService.getObjectById(documentID);
+			if(null!=document) {
+				contratGestion.addDocument(document);
+				contratGestionServiceImpl.updateObject(contratGestionID, contratGestion);
+			}
+		}
+		return contratGestion;
 	}
-
+	
+	@Override
+	public ContratGestion setOptions(long contratGestionID, long optionsID) throws Exception {
+		ContratGestion contratGestion = contratGestionServiceImpl.getObjectById(contratGestionID);
+		if(null!=contratGestion) {
+			Options options = optionsService.getObjectById(optionsID);
+			if(null!=options) {
+				contratGestion.setOptions(options);
+				contratGestionServiceImpl.updateObject(contratGestionID, contratGestion);
+			}
+		}
+		return contratGestion;
+	}
 }
