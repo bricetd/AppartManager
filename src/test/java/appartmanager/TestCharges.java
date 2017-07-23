@@ -109,9 +109,7 @@ public class TestCharges {
 		PaiementServiceImpl.getInstance().saveObject(paiement);
 		Assert.assertNotNull(paiement.getId());
 		paiementID = paiement.getId();
-		Charges charges = chargesService.getObjectById(chargesID);
-		charges.addPaiement(paiement);
-		chargesService.updateObject(chargesID, charges);
+		Charges charges = chargesService.addPaiement(chargesID, paiementID);
 		charges = chargesService.getObjectById(chargesID);
 		for (Paiement p : charges.getPaiements()) {
 			Assert.assertEquals(p.getId(), paiement.getId());

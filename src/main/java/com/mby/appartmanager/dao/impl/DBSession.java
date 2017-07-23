@@ -30,10 +30,6 @@ public class DBSession {
 		return dbsession;
 	}
 	
-	public Session openSession(){
-		return factory.openSession();
-	}
-	
 	public Object saveTransactionalObject(Object o){
 		if(null!=factory) {
 			Session session = factory.openSession();
