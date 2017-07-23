@@ -11,8 +11,8 @@ import io.swagger.annotations.Api;
 @Path("/paiement")
 @Api(value = "paiement")
 @Produces("application/json")
-public class PaimentAPI extends GenericAPI<Paiement>{
-	public PaimentAPI() {
+public class PaiementAPI extends GenericAPI<Paiement>{
+	public PaiementAPI() {
 		super(PaiementServiceImpl.getInstance());
 	}
 }
