@@ -1,12 +1,16 @@
 package com.mby.appartmanager.dao;
 
-import java.util.Date;
+import java.util.List;
+
+import com.mby.appartmanager.models.Location;
 
 public interface LocationService {
 
-	public boolean createLocation(Date date_debut, Date date_fin, boolean isCollocation,
-			boolean isMeuble);
-	public boolean deleteLocation(int locationID);
-	public boolean addLocataire(int locationID, int locataireID);
-	public boolean addDocument(int locationID, int documentID);
+	public Location deleteObject(long locationID);
+	public Location getObjectById(long locationID);
+	public List<Location> getAllObjects();
+	public Location updateObject(long locationID, Location location) throws Exception;
+	public Location saveObject(Location location);
+	public Location addDocument(long locationID, long documentID) throws Exception;
+	public Location addLocataire(long locationID, long locataireID) throws Exception;
 }

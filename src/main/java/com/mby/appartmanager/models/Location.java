@@ -5,14 +5,12 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
 
 import com.mby.appartmanager.models.interfaces.LocataireInterface;
 
@@ -37,8 +35,8 @@ public class Location extends AbstractModelWithDocuments implements LocataireInt
 	@XmlElement(name="isMeuble")
 	private boolean isMeuble;
 	
-	@OneToMany
-	@Cascade({CascadeType.ALL})
+	@OneToMany(fetch = FetchType.EAGER)
+//	@Cascade({CascadeType.ALL})
 	private Set<Locataire> locataires;
 	
 	public Set<Locataire> getLocataires() {
