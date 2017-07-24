@@ -12,6 +12,7 @@ import com.mby.appartmanager.dao.impl.DocumentServiceImpl;
 import com.mby.appartmanager.dao.impl.IncidentServiceImpl;
 import com.mby.appartmanager.dao.impl.LocataireServiceImpl;
 import com.mby.appartmanager.dao.impl.PaiementServiceImpl;
+import com.mby.appartmanager.models.Coordonnees;
 import com.mby.appartmanager.models.Document;
 import com.mby.appartmanager.models.Incident;
 import com.mby.appartmanager.models.Locataire;
@@ -33,6 +34,7 @@ public class TestLocataire {
 	private long paiementID;
 	private long incidentID;
 	private long documentID;
+	private long coordonneesID;
 
 	@BeforeClass
 	public void init() {
@@ -124,11 +126,11 @@ public class TestLocataire {
 		DocumentServiceImpl.getInstance().saveObject(doc);
 		Assert.assertNotNull(doc.getId());
 		documentID = doc.getId();
-		locataireService.addDocument(locataireID, doc.getId());
+		locataireService.addDocument(locataireID, documentID);
 		Locataire locataire = locataireService.getObjectById(locataireID);
 		Assert.assertTrue(locataire.getDocuments().size() == 1);
 		for (Document d : locataire.getDocuments()) {
-			Assert.assertEquals(d.getId(), doc.getId());
+			Assert.assertEquals(d.getId(), documentID);
 		}
 	}
 
@@ -143,18 +145,38 @@ public class TestLocataire {
 		PaiementServiceImpl.getInstance().saveObject(paiement);
 		Assert.assertNotNull(paiement.getId());
 		paiementID = paiement.getId();
+		locataireService.addPaiement(locataireID, paiementID);
 		Locataire locataire = locataireService.getObjectById(locataireID);
-		locataire.addPaiement(paiement);
-		locataireService.updateObject(locataireID, locataire);
-		locataire = locataireService.getObjectById(locataireID);
 		for (Paiement p : locataire.getPaiements()) {
-			Assert.assertEquals(p.getId(), paiement.getId());
+			Assert.assertEquals(p.getId(), paiementID);
 			Assert.assertEquals(p.getMontant(), paiement.getMontant());
 			Assert.assertEquals(p.getModepaiement(), paiement.getModepaiement());
 		}
 	}
-
+	
 	@Test(dependsOnMethods = "testAddPaiement")
+	public void testSetCoordonnees() throws Exception {
+		Coordonnees coordonnees = new Coordonnees();
+		coordonnees.setAdresse("Mon adresse");
+		coordonnees.setAutre("Autre phone");
+		coordonnees.setCode_postal((short) 95370);
+		coordonnees.setCommentaire("Un commentaire");
+		coordonnees.setEmail("bricetd@gmail.com");
+		CoordonneesServiceImpl.getInstance().saveObject(coordonnees);
+		Assert.assertNotNull(coordonnees.getId());
+		coordonneesID = coordonnees.getId();
+		locataireService.setCoordonnees(locataireID, coordonneesID);
+		Locataire locataire = locataireService.getObjectById(locataireID);
+		Coordonnees c = locataire.getCoordonnees();
+		Assert.assertEquals(c.getId(), coordonneesID);
+		Assert.assertEquals(c.getAdresse(), coordonnees.getAdresse());
+		Assert.assertEquals(c.getAutre(), coordonnees.getAutre());
+		Assert.assertEquals(c.getCode_postal(), coordonnees.getCode_postal());
+		Assert.assertEquals(c.getEmail(), coordonnees.getEmail());
+		Assert.assertEquals(c.getCommentaire(), coordonnees.getCommentaire());
+	}
+
+	@Test(dependsOnMethods = "testSetCoordonnees")
 	public void testAddIncident() throws Exception {
 		Incident incident = new Incident();
 		incident.setDate(new Date());
@@ -165,12 +187,10 @@ public class TestLocataire {
 		IncidentServiceImpl.getInstance().saveObject(incident);
 		Assert.assertNotNull(incident.getId());
 		incidentID = incident.getId();
+		locataireService.addIncident(locataireID, incidentID);
 		Locataire locataire = locataireService.getObjectById(locataireID);
-		locataire.addIncident(incident);
-		locataireService.updateObject(locataireID, locataire);
-		locataire = locataireService.getObjectById(locataireID);
 		for (Incident i : locataire.getIncidents()) {
-			Assert.assertEquals(i.getId(), incident.getId());
+			Assert.assertEquals(i.getId(), incidentID);
 			Assert.assertEquals(i.getDescription(), incident.getDescription());
 			Assert.assertEquals(i.getJustification(), incident.getJustification());
 		}

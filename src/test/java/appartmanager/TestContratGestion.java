@@ -89,11 +89,11 @@ public class TestContratGestion {
 		DocumentServiceImpl.getInstance().saveObject(doc);
 		Assert.assertNotNull(doc.getId());
 		documentID = doc.getId();
-		contratGestionService.addDocument(contratGestionID, doc.getId());
+		contratGestionService.addDocument(contratGestionID, documentID);
 		ContratGestion contratGestion = contratGestionService.getObjectById(contratGestionID);
 		Assert.assertTrue(contratGestion.getDocuments().size() == 1);
 		for (Document d : contratGestion.getDocuments()) {
-			Assert.assertEquals(d.getId(), doc.getId());
+			Assert.assertEquals(d.getId(), documentID);
 		}
 	}
 
@@ -107,7 +107,7 @@ public class TestContratGestion {
 		OptionsServiceImpl.getInstance().saveObject(options);
 		Assert.assertNotNull(options.getId());
 		optionsID = options.getId();
-		contratGestionService.setOptions(contratGestionID, options.getId());
+		contratGestionService.setOptions(contratGestionID, optionsID);
 		ContratGestion contratGestion = contratGestionService.getObjectById(contratGestionID);
 		Assert.assertNotNull(contratGestion.getOptions());
 		Assert.assertEquals(contratGestion.getOptions().isAssurance_loyer_impaye(), options.isAssurance_loyer_impaye());

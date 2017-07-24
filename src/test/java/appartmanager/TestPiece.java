@@ -90,7 +90,7 @@ public class TestPiece {
 		EquipementServiceImpl.getInstance().saveObject(equipement);
 		Assert.assertNotNull(equipement.getId());
 		equipementID = equipement.getId();
-		pieceService.addEquipement(pieceID, equipement.getId());
+		pieceService.addEquipement(pieceID, equipementID);
 		Piece piece = pieceService.getObjectById(pieceID);
 		Assert.assertTrue(piece.getEquipements().size() == 1);
 		for (Equipement e : piece.getEquipements()) {

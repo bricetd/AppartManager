@@ -86,11 +86,11 @@ public class TestTransaction {
 		DocumentServiceImpl.getInstance().saveObject(doc);
 		Assert.assertNotNull(doc.getId());
 		documentID = doc.getId();
-		transactionService.addDocument(transactionID, doc.getId());
+		transactionService.addDocument(transactionID, documentID);
 		Transaction transaction = transactionService.getObjectById(transactionID);
 		Assert.assertTrue(transaction.getDocuments().size() == 1);
 		for (Document d : transaction.getDocuments()) {
-			Assert.assertEquals(d.getId(), doc.getId());
+			Assert.assertEquals(d.getId(),documentID);
 		}
 	}
 	@Test(dependsOnMethods="testAddDocument")
@@ -103,10 +103,8 @@ public class TestTransaction {
 		DispositifFiscalServiceImpl.getInstance().saveObject(dispFisc);
 		Assert.assertNotNull(dispFisc.getId());
 		dispFiscalID = dispFisc.getId();
+		transactionService.setDispositifFiscal(transactionID, dispFiscalID);
 		Transaction transaction = transactionService.getObjectById(transactionID);
-		transaction.setDispositifFiscal(dispFisc);
-		transactionService.updateObject(transactionID, transaction);
-		transaction = transactionService.getObjectById(transactionID);
 		Assert.assertEquals(transaction.getDispositifFiscal().getArticles_loi(), dispFisc.getArticles_loi());
 		Assert.assertEquals(transaction.getDispositifFiscal().getNom(), dispFisc.getNom());
 		Assert.assertEquals(transaction.getDispositifFiscal().getConditions(), dispFisc.getConditions());

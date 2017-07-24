@@ -1,9 +1,16 @@
 package com.mby.appartmanager.dao;
 
+import java.util.List;
+
+import com.mby.appartmanager.models.Gestionnaire;
+
 public interface GestionnaireService {
 
-	public boolean createGestionnaire(String nom, String prenom, String raison_sociale);
-	public boolean deleteGestionnaire(int gestionnaireID);
-	public boolean setCoordonnees(int gestionnaireID, int coordonneesID);
-	public boolean addContratGestion(int gestionnaireID, int contratGestionID);
+	public Gestionnaire deleteObject(long gestionnaireID);
+	public Gestionnaire getObjectById(long gestionnaireID);
+	public List<Gestionnaire> getAllObjects();
+	public Gestionnaire updateObject(long gestionnaireID, Gestionnaire gestionnaire) throws Exception;
+	public Gestionnaire saveObject(Gestionnaire gestionnaire);
+	public Gestionnaire setCoordonnees(long gestionnaireID, long coordonneesID)throws Exception;
+	public Gestionnaire addContratGestion(long gestionnaireID, long contratGestionID)throws Exception;
 }

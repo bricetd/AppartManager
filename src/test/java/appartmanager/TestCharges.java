@@ -90,11 +90,11 @@ public class TestCharges {
 		DocumentServiceImpl.getInstance().saveObject(doc);
 		Assert.assertNotNull(doc.getId());
 		documentID = doc.getId();
-		chargesService.addDocument(chargesID, doc.getId());
+		chargesService.addDocument(chargesID, documentID);
 		Charges charges = chargesService.getObjectById(chargesID);
 		Assert.assertTrue(charges.getDocuments().size() == 1);
 		for (Document d : charges.getDocuments()) {
-			Assert.assertEquals(d.getId(), doc.getId());
+			Assert.assertEquals(d.getId(), documentID);
 		}
 	}
 

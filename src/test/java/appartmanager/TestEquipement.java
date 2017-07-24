@@ -77,11 +77,11 @@ public class TestEquipement {
 		DocumentServiceImpl.getInstance().saveObject(doc);
 		Assert.assertNotNull(doc.getId());
 		documentID = doc.getId();
-		equipementService.addDocument(equipementID, doc.getId());
+		equipementService.addDocument(equipementID, documentID);
 		Equipement equipement = equipementService.getObjectById(equipementID);
 		Assert.assertTrue(equipement.getDocuments().size() == 1);
 		for (Document d : equipement.getDocuments()) {
-			Assert.assertEquals(d.getId(), doc.getId());
+			Assert.assertEquals(d.getId(), documentID);
 		}
 	}
 	

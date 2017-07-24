@@ -12,5 +12,6 @@ public interface TransactionService {
 	public Transaction updateObject(long transactionID, Transaction transaction) throws Exception;
 	public Transaction saveObject(Transaction transaction);
 	public Transaction addDocument(long transactionID, long documentID) throws Exception;
+	public Transaction setDispositifFiscal(long transactionID, long dispFiscalID) throws Exception;
 
 }

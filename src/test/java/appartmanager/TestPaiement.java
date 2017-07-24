@@ -91,11 +91,11 @@ public class TestPaiement {
 		DocumentServiceImpl.getInstance().saveObject(doc);
 		Assert.assertNotNull(doc.getId());
 		documentID = doc.getId();
-		paiementService.addDocument(paiementID, doc.getId());
+		paiementService.addDocument(paiementID, documentID);
 		Paiement paiement = paiementService.getObjectById(paiementID);
 		Assert.assertTrue(paiement.getDocuments().size() == 1);
 		for (Document d : paiement.getDocuments()) {
-			Assert.assertEquals(d.getId(), doc.getId());
+			Assert.assertEquals(d.getId(), documentID);
 		}
 	}
 	

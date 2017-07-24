@@ -89,11 +89,11 @@ public class TestIncident {
 		DocumentServiceImpl.getInstance().saveObject(doc);
 		Assert.assertNotNull(doc.getId());
 		documentID = doc.getId();
-		incidentService.addDocument(incidentID, doc.getId());
+		incidentService.addDocument(incidentID, documentID);
 		Incident incident = incidentService.getObjectById(incidentID);
 		Assert.assertTrue(incident.getDocuments().size() == 1);
 		for (Document d : incident.getDocuments()) {
-			Assert.assertEquals(d.getId(), doc.getId());
+			Assert.assertEquals(d.getId(), documentID);
 		}
 	}
 	

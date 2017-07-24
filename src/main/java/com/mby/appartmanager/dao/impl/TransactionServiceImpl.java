@@ -33,6 +33,7 @@ private DocumentService documentService;
 		this.documentService = documentService;
 	}
 	
+	@Override
 	public Transaction setDispositifFiscal(long transactionID, long dispositifFiscalID) throws Exception {
 		Transaction transaction = transactionServiceImpl.getObjectById(transactionID);
 		if(null!=transaction) {
