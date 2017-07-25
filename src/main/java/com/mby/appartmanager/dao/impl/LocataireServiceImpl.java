@@ -47,12 +47,12 @@ private PaiementService paiementService;
 		this.documentService = documentService;
 	}
 	
-	public Locataire setCoordonnees(long locataireID, long dispositifFiscalID) throws Exception {
+	public Locataire setCoordonnees(long locataireID, long coordonneesID) throws Exception {
 		Locataire locataire = locataireServiceImpl.getObjectById(locataireID);
 		if(null!=locataire) {
-			Coordonnees dispFiscal = coordonneesService.getObjectById(dispositifFiscalID);
-			if(null!=dispFiscal) {
-				locataire.setCoordonnees(dispFiscal);
+			Coordonnees coordonnees = coordonneesService.getObjectById(coordonneesID);
+			if(null!=coordonnees) {
+				locataire.setCoordonnees(coordonnees);
 				locataireServiceImpl.updateObject(locataireID, locataire);
 			}
 		}

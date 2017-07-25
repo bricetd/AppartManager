@@ -218,6 +218,13 @@ public class TestLocataire {
 		IncidentServiceImpl.getInstance().deleteObject(incidentID);
 		incident = IncidentServiceImpl.getInstance().getObjectById(incidentID);
 		Assert.assertNull(incident);
+		
+		// Delete created coordonnees
+		Coordonnees coordonnees = CoordonneesServiceImpl.getInstance().getObjectById(coordonneesID);
+		Assert.assertNotNull(coordonnees);
+		CoordonneesServiceImpl.getInstance().deleteObject(coordonneesID);
+		coordonnees = CoordonneesServiceImpl.getInstance().getObjectById(coordonneesID);
+		Assert.assertNull(coordonnees);
 
 		// Delete create documents
 		Document doc = DocumentServiceImpl.getInstance().getObjectById(documentID);

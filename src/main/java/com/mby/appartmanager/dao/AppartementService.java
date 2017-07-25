@@ -1,21 +1,21 @@
 package com.mby.appartmanager.dao;
 
+import java.util.List;
+
+import com.mby.appartmanager.models.Appartement;
+
 public interface AppartementService {
 	
-	public boolean createAppartement(String nom, short surface,
-			short etage, boolean hasParking, boolean hasCave);
-
-	public boolean deleteAppartement(int appartementID);
-	
-	public boolean addTransaction(int appartementID, int transactionID);
-	
-	public boolean addLocation(int appartementID, int locationID);
-	
-	public boolean addPiece(int appartementID, int pieceID);
-	
-	public boolean addCharge(int appartementID, int chargesID);
-	
-	public boolean addGestionnaire(int appartementID,  int gestionnaireID);
-	
-	public boolean setCoordonnees(int appartementID, int coordonneesID);
+	public Appartement deleteObject(long appartementID);
+	public Appartement getObjectById(long appartementID);
+	public List<Appartement> getAllObjects();
+	public Appartement updateObject(long appartementID, Appartement appartement) throws Exception;
+	public Appartement saveObject(Appartement appartement);
+	public Appartement addDocument(long appartementID, long documentID) throws Exception;
+	public Appartement addTransaction(long appartementID, long transactionID) throws Exception;
+	public Appartement addLocation(long appartementID, long locationID) throws Exception;
+	public Appartement addPiece(long appartementID, long pieceID) throws Exception;
+	public Appartement addCharges(long appartementID, long chargesID) throws Exception;
+	public Appartement addGestionnaire(long appartementID, long gestionnaireID) throws Exception;
+	public Appartement setCoordonnees(long appartementID, long coordonneesID) throws Exception;
 }
