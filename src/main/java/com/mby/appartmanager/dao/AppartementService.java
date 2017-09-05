@@ -1,8 +1,10 @@
 package com.mby.appartmanager.dao;
 
 import java.util.List;
+import java.util.Set;
 
 import com.mby.appartmanager.models.Appartement;
+import com.mby.appartmanager.models.Document;
 
 public interface AppartementService {
 	
@@ -18,4 +20,5 @@ public interface AppartementService {
 	public Appartement addCharges(long appartementID, long chargesID) throws Exception;
 	public Appartement addGestionnaire(long appartementID, long gestionnaireID) throws Exception;
 	public Appartement setCoordonnees(long appartementID, long coordonneesID) throws Exception;
+	public Set<Document> getAppartementDocuments(long appartementID) throws Exception;
 }

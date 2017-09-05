@@ -1,5 +1,7 @@
 package com.mby.appartmanager.dao.impl;
 
+import java.util.Set;
+
 import com.mby.appartmanager.dao.AppartementService;
 import com.mby.appartmanager.dao.ChargesService;
 import com.mby.appartmanager.dao.CoordonneesService;
@@ -154,5 +156,11 @@ private GestionnaireService gestionnaireService;
 			}
 		}
 		return appartement;
+	}
+
+	@Override
+	public Set<Document> getAppartementDocuments(long appartementID) throws Exception {
+		Appartement appartement = appartementServiceImpl.getObjectById(appartementID);
+		return null!=appartement?appartement.getDocuments():null;
 	}
 }

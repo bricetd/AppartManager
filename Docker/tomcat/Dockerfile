@@ -32,9 +32,10 @@ ENV TOMCAT8_SECURITY=no
 RUN sed -i 's@^#JAVA_HOME.*@JAVA_HOME=/usr/lib/jvm/java-8-oracle@g' /etc/default/tomcat8
 WORKDIR /var/lib/tomcat8/logs
 #RUN ./bin/startup.sh
+#COPY web.xml ${CATALINA_BASE}/conf/web.xml
+COPY logger.properties ${CATALINA_BASE}/conf/logging.properties
 ADD start.sh /start.sh
 RUN chmod +x /start.sh
-COPY logger.properties ${CATALINA_BASE}/conf/logging.properties
 # Expose the tomcat default port
 EXPOSE 8080
 # Define default command.
