@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+        version="2.0">
+    <persistence-unit name="com.mby.appartmanager">
+        <description>JPA Demo</description>
+<!--         <provider>org.hibernate.ejb.HibernatePersistence</provider> -->
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <class>com.mby.appartmanager.models.Appartement</class>
+		<class>com.mby.appartmanager.models.Charges</class>
+		<class>com.mby.appartmanager.models.ContratGestion</class>
+		<class>com.mby.appartmanager.models.Coordonnees</class>
+		<class>com.mby.appartmanager.models.DispositifFiscal</class>
+		<class>com.mby.appartmanager.models.Document</class>
+		<class>com.mby.appartmanager.models.Equipement</class>
+		<class>com.mby.appartmanager.models.Gestionnaire</class>
+		<class>com.mby.appartmanager.models.Incident</class>
+		<class>com.mby.appartmanager.models.Locataire</class>
+		<class>com.mby.appartmanager.models.Location</class>
+		<class>com.mby.appartmanager.models.Options</class>
+		<class>com.mby.appartmanager.models.Paiement</class>
+		<class>com.mby.appartmanager.models.Piece</class>
+		<class>com.mby.appartmanager.models.Transaction</class>
+        <properties>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL92Dialect"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+<!--             <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://database:5432/appartements"/> -->
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/appartements"/>
+            <property name="javax.persistence.jdbc.user" value="appowner"/>
+            <property name="javax.persistence.jdbc.password" value="newr00t"/>
+        </properties>
+    </persistence-unit>
+</persistence> 
+
